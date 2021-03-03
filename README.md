@@ -43,6 +43,28 @@
   DROP DATABASE nomeDoBanco;
   ```
 
+## DML
+
+- ##### INSERT INTO
+
+  Serve para inserir dados em uma tabela já existente. Os valores devem estar entre aspas e precisam estar na mesma ordem que o nome das colunas.
+
+  ```mysql
+  INSERT INTO nomeTabela ('coluna1', 'coluna2'...) VALUES ('valor1', 'valor2'...);
+  ```
+
+  Quando estamos inserindo valores em todas as colunas da tabela, não é preciso indicá-las no comando:
+
+  ```mysql
+  INSERT INTO nomeTabela VALUES (valoresInseridos);
+  ```
+
+  É possível adicionar várias linhas com um só comando. O importante é que os parênteses devem ser separados por vírgula. Veja o exemplo de uma tabela que tem uma coluna:
+
+  ```mysql
+  INSERT INTO nomeTabela VALUES ('linha1'), ('linha2'), ('linha3');
+  ```
+
 ## Chave primária
 
 A restrição `PRIMARY KEY` identifica a exclusividade de cada registro em uma tabela. Por isso tem valores únicos e não podem conter valores `NULL`.
@@ -96,42 +118,42 @@ UNSIGNED não aceita dados negativos.
 
 ### Tipo de valores numéricos
 
-| *Tipos*                                   | Tamanho                                | **Usar**                                       |
-| :---------------------------------------- | :------------------------------------- | :--------------------------------------------- |
-| BIT(M)                                    | M ou o valor padrão que é 1            | Dado do tipo bit                               |
-| TINYINT[(M)] [UNSIGNED] [ZEROFILL]        | 1 byte                                 | Valores inteiros pequenos                      |
-| SMALLINT[(M)] [UNSIGNED] [ZEROFILL]       | 2 bytes                                | Valor inteiro                                  |
-| MEDIUMINT                                 | 3 bytes                                | Valor inteiro                                  |
-| INT ou INTEGER[(M)] [UNSIGNED] [ZEROFILL] | 4 bytes                                | Valor inteiro                                  |
-| BIGINT[(M)] [UNSIGNED] [ZEROFILL]         | 8 bytes                                | Valor inteiro máximo                           |
-| FLOAT[(M [ , D])] [UNSIGNED] [ZEROFILL]   | 4 bytes                                | Valores de ponto flutuante de precisão única   |
-| DOUBLE[(M[ , D])] [UNSIGNED] [ZEROFILL]   | 8 bytes                                | Valores de ponto flutuante de precisão dupla   |
-| DECIMAL[(M[ , D])] [UNSIGNED] [ZEROFILL]  | Se M > D, M + 2 é caso contrário D + 2 | Valor decimal que depende dos valores de M e D |
+| *Tipos*        | Forma alternativa                         | **Usar**                                               |
+| :------------- | ----------------------------------------- | :----------------------------------------------------- |
+| BIT            | BIT(M)                                    | Dado do tipo bit                                       |
+| TINYINT        | TINYINT[(M)] [UNSIGNED] [ZEROFILL]        | Valores inteiros pequenos (1 byte)                     |
+| SMALLINT       | SMALLINT[(M)] [UNSIGNED] [ZEROFILL]       | Valor inteiro de  2 bytes                              |
+| MEDIUMINT      | MEDIUMINT                                 | Valor inteiro de 3 bytes                               |
+| INT ou INTEGER | INT ou INTEGER[(M)] [UNSIGNED] [ZEROFILL] | Valor inteiro de 4 bytes                               |
+| BIGINT         | BIGINT[(M)] [UNSIGNED] [ZEROFILL]         | Valor inteiro máximo (8 bytes)                         |
+| FLOAT          | FLOAT[(M [ , D])] [UNSIGNED] [ZEROFILL]   | Valores de ponto flutuante de precisão única (4 bytes) |
+| DOUBLE         | DOUBLE[(M[ , D])] [UNSIGNED] [ZEROFILL]   | Valores de ponto flutuante de precisão dupla (8 bytes) |
+| DECIMAL        | DECIMAL[(M[ , D])] [UNSIGNED] [ZEROFILL]  | Valor decimal que depende dos valores de M e D         |
 
 ### Tipo temporal
 
-| Tipo                    | Tamanho | Formato               | Usar                                                       |
-| :---------------------- | :------ | :-------------------- | :--------------------------------------------------------- |
-| DATE                    | 3 byte  | YYYY-MM-DD            | Valores de data                                            |
-| TIME [(***fsp\***)]     | 3 byte  | HH: MM: SS            | Valor de tempo ou a duração                                |
-| YEAR [(4)]              | 1 byte  | YYYY                  | Valor do ano                                               |
-| DATETIME[(***fsp\***)]  | 8 byte  | YYYY-MM-DD HH: MM: SS | Combinando valores de data e hora                          |
-| TIMESTAMP[(***fsp\***)] | 4 byte  | YYYYMMDD HHMMSS       | Misturando valor de data e hora, um carimbo de data / hora |
+| Tipo             | Tamanho | Formato               | Usar                                                       |
+| :--------------- | :------ | :-------------------- | :--------------------------------------------------------- |
+| DATE             | 3 byte  | YYYY-MM-DD            | Valores de data                                            |
+| TIME [(fsp)]     | 3 byte  | HH: MM: SS            | Valor de tempo ou a duração                                |
+| YEAR [(4)]       | 1 byte  | YYYY                  | Valor do ano                                               |
+| DATETIME[(fsp)]  | 8 byte  | YYYY-MM-DD HH: MM: SS | Combinação de valores de data e hora                       |
+| TIMESTAMP[(fsp)] | 4 byte  | YYYYMMDD HHMMSS       | Misturando valor de data e hora, um carimbo de data / hora |
 
 ### Tipo texto
 
-| Tipo                                                         | Tamanho            | Usar                                                 |
-| :----------------------------------------------------------- | :----------------- | :--------------------------------------------------- |
-| [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-255 bytes        | String de comprimento fixo                           |
-| [NATIONAL] VARCHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-65535 bytes      | Strings de comprimento variável                      |
-| TINYBLOB                                                     | 0-255 bytes        | Não mais do que 255 caracteres em string binária     |
-| TINYTEXT                                                     | 0-255 bytes        | Strings de texto curtas                              |
-| BLOB [(M)]                                                   | 0-65535 bytes      | Dados de texto longo em formato binário              |
-| TEXT [(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-65535 bytes      | Dados de texto longo                                 |
-| MEDIUMBLOB                                                   | 0-16777215 bytes   | Forma binária de dados de texto de comprimento médio |
-| MEDIUMTEXT                                                   | 0-16777215 bytes   | Dados de texto de comprimento médio                  |
-| LONGBLOB                                                     | 0-4294967295 bytes | Longos dados de texto em formato binário             |
-| LONGTEXT                                                     | 0-4294967295 bytes | Longos dados de texto                                |
+| Tipo       | Forma alternativa                                            | Tamanho            | Usar                                                 |
+| :--------- | ------------------------------------------------------------ | :----------------- | :--------------------------------------------------- |
+| CHAR       | [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-255 bytes        | String de comprimento fixo                           |
+| VARCHAR    | [NATIONAL] VARCHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-65535 bytes      | Strings de comprimento variável                      |
+| TINYBLOB   |                                                              | 0-255 bytes        | Não mais do que 255 caracteres em string binária     |
+| TINYTEXT   |                                                              | 0-255 bytes        | Strings de texto curtas                              |
+| BLOB [(M)] |                                                              | 0-65535 bytes      | Dados de texto longo em formato binário              |
+| TEXT       | TEXT [(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-65535 bytes      | Dados de texto longo                                 |
+| MEDIUMBLOB |                                                              | 0-16777215 bytes   | Forma binária de dados de texto de comprimento médio |
+| MEDIUMTEXT |                                                              | 0-16777215 bytes   | Dados de texto de comprimento médio                  |
+| LONGBLOB   |                                                              | 0-4294967295 bytes | Longos dados de texto em formato binário             |
+| LONGTEXT   |                                                              | 0-4294967295 bytes | Longos dados de texto                                |
 
 ### Tipo ENUM
 
@@ -139,11 +161,45 @@ Só aceita os valores que enumerarmos na criação do campo.
 
 ### Tipo NULL
 
-O null é um tipo especial suportado pelo banco de dados para representar o vazio, e o padrão do MySQL é permitir null nas colunas.
+O null é um tipo especial suportado pelo banco de dados para representar o vazio. Conceitualmente, `NULL` significa “ um valor desconhecido ausente ” e o padrão do MySQL é permitir null nas colunas.
 
 ### Tipo Bool ou Boolean
 
 Na prática é o mesmo que usar um TINYINT(1).
+
+## Atributos
+
+- ##### NOT NULL
+
+  É uma restrição de coluna que garante que os valores nela armazenados não sejam `NULL`.
+
+- ##### AUTO_INCREMENT
+
+  Pode ser usado para gerar uma identidade única para novas linhas da coluna, como o id:
+
+  ```mysql
+  CREATE TABLE pessoas (
+  	id INT AUTO_INCREMENT,
+      nome VARCHAR(30) NOT NULL,
+      PRIMARY KEY (id)
+  ) 
+  ```
+
+  Quando for inserir novas colunas, não é necessário especificar o id, porque este possui o`AUTO_INCREMENT`. Mas se for o caso, pode usar o valor `DEFAULT`:
+
+  ```mysql
+  INSERT INTO pessoas VALUES ('Maria');
+  ```
+
+  ou
+
+  ```mysql
+  INSERT INTO pessoas VALUES (DEFAULT, 'Maria');
+  ```
+
+- ##### DEFAULT 
+
+  É uma restrição utilizada para inserirmos um valor padrão em uma coluna. Esse valor padrão é inserido automaticamente nos registros, se nenhum valor for especificado para a coluna.
 
 ## Configurando o conjunto de caracteres e agrupamento
 
@@ -175,4 +231,10 @@ Nesses exemplos, configuramos o conjunto de caracteres UTF8 que possui símbolos
 - [MySQL — Tipos de dados: Introdução e dados numéricos (1 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-introdu%C3%A7%C3%A3o-e-dados-num%C3%A9ricos-1-de-3-a6e48fb5e1d3)
 - [MySQL — Tipos de dados: data/hora (2 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-data-hora-2-de-3-c147a8d90f93)
 - [MySQL — Tipos de dados: strings (3 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-strings-3-de-3-13cba7dccf2f)
+- [Restrição MySQL NOT NULL](https://www.mysqltutorial.org/mysql-not-null-constraint/#:~:text=The%20NOT%20NULL%20constraint%20is,a%20column%20are%20not%20NULL%20.&text=A%20column%20may%20contain%20only,MySQL%20will%20issue%20an%20error.)
+
+###### Principais links:
+
+- [Documentação MySQL](https://dev.mysql.com/doc/)
+- [MySQL TUTORIAL](https://www.mysqltutorial.org/)
 
