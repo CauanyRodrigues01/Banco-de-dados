@@ -71,7 +71,7 @@ A restrição `PRIMARY KEY` identifica a exclusividade de cada registro em uma t
 
 Uma tabela pode ter apenas uma chave primária; e na tabela, essa chave primária pode consistir em uma ou várias colunas (campos).
 
-#### Chave primária no criação de tabela
+#### Chave primária na criação de tabela
 
 Deve-se criar um atributo id com `NOT NULL` para que ele seja único e com `AUTO_INCREMENT`, para que o MySQL crie o id automaticamente para cada instância. No final, `PRIMARY KEY`recebe o id criado anteriormente.
 
