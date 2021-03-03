@@ -104,7 +104,7 @@ OBS.:
 
 **fsp** são destinados a dados que indicam tempo e data, representa a precisão fracional dos segundos.
 
-**Precisão simples ** contempla uma precisão de aproximadamente 7 casas decimais.
+**Precisão simples** contempla uma precisão de aproximadamente 7 casas decimais.
 
 **Precisão dupla** contempla aproximadamente 15 casas decimais.
 
