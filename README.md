@@ -24,7 +24,11 @@
   Cria uma tabela. Recebe como parâmetro os nomes das colunas da tabela e seu tipo de dados.
 
   ```mysql
-  CREATE TABLE nomeDaTabela (colunasDaTabela);
+  CREATE TABLE nomeDaTabela (
+      coluna1 tipo restrições,
+      coluna2 tipo restrições
+      ...
+  );
   ```
 
 - ##### DESCRIBE ou DESC:
