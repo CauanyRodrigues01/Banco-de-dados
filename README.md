@@ -89,7 +89,7 @@ Por padrão do MySQL, uma coluna possui valores `NULL`. Mas podemos usar a restr
 
 ```mysql
 CREATE TABLE nomeTabela (
-	atributo1 VARCHAR(30) NOT NULL,
+    atributo1 VARCHAR(30) NOT NULL,
     atributo2 VARCHAR(30)
 );
 ```
@@ -179,7 +179,7 @@ Na prática é o mesmo que usar um TINYINT(1).
 
   ```mysql
   CREATE TABLE pessoas (
-  	id INT AUTO_INCREMENT,
+      id INT AUTO_INCREMENT,
       nome VARCHAR(30) NOT NULL,
       PRIMARY KEY (id)
   ) 
@@ -213,7 +213,7 @@ DEFAULT COLLATE utf8_general_ci;
 
 ```mysql
 CREATE TABLE pessoas (
-	nome VARCHAR(30) NOT NULL
+    nome VARCHAR(30) NOT NULL
 ) DEFAULT CHARSET = utf8;
 ```
 
