@@ -1,0 +1,7 @@
+ALTER TABLE cursos
+ADD COLUMN idCurso INT FIRST;
+
+ALTER TABLE cursos
+ADD PRIMARY KEY (idcurso);
+
+DESC cursos;
