@@ -27,7 +27,7 @@
   CREATE TABLE nomeDaTabela (colunasDaTabela);
   ```
 
-- ##### DESCRIBE:
+- ##### DESCRIBE ou DESC:
 
   Descreve a estrutura de tabelas com suas colunas e tipo de dados.
 
@@ -118,42 +118,42 @@ UNSIGNED não aceita dados negativos.
 
 ### Tipo de valores numéricos
 
-| *Tipos*        | Forma alternativa                         | **Usar**                                               |
-| :------------- | ----------------------------------------- | :----------------------------------------------------- |
-| BIT            | BIT(M)                                    | Dado do tipo bit                                       |
-| TINYINT        | TINYINT[(M)] [UNSIGNED] [ZEROFILL]        | Valores inteiros pequenos (1 byte)                     |
-| SMALLINT       | SMALLINT[(M)] [UNSIGNED] [ZEROFILL]       | Valor inteiro de  2 bytes                              |
-| MEDIUMINT      | MEDIUMINT                                 | Valor inteiro de 3 bytes                               |
-| INT ou INTEGER | INT ou INTEGER[(M)] [UNSIGNED] [ZEROFILL] | Valor inteiro de 4 bytes                               |
-| BIGINT         | BIGINT[(M)] [UNSIGNED] [ZEROFILL]         | Valor inteiro máximo (8 bytes)                         |
-| FLOAT          | FLOAT[(M [ , D])] [UNSIGNED] [ZEROFILL]   | Valores de ponto flutuante de precisão única (4 bytes) |
-| DOUBLE         | DOUBLE[(M[ , D])] [UNSIGNED] [ZEROFILL]   | Valores de ponto flutuante de precisão dupla (8 bytes) |
-| DECIMAL        | DECIMAL[(M[ , D])] [UNSIGNED] [ZEROFILL]  | Valor decimal que depende dos valores de M e D         |
+| Tipos          | Forma alternativa                         | Definição                                                    |
+| :------------- | ----------------------------------------- | :----------------------------------------------------------- |
+| BIT            | BIT(M)                                    | Número inteiro que pode ser somente 0 (falso) ou 1 (verdadeiro). |
+| TINYINT        | TINYINT[(M)] [UNSIGNED] [ZEROFILL]        | Caso haja valor negativo, a margem de uso dele é de -128 até 127. Caso seja apenas positivo, vai de 0 a 255. |
+| SMALLINT       | SMALLINT[(M)] [UNSIGNED] [ZEROFILL]       | Número inteiro com ou sem sinal negativo. Caso haja sinal negativo, vai de -32768 até 32767. Sem sinal, vai de 0 até 65535. |
+| MEDIUMINT      | MEDIUMINT                                 | Número inteiro, com ou sem sinal negativo. Com sinal vai de -8.388.608 até 8.388.607. Sem sinal vai de 0 até 16777215. |
+| INT ou INTEGER | INT ou INTEGER[(M)] [UNSIGNED] [ZEROFILL] | Número inteiro, positivo ou negativo. Caso haja número negativo, sua margem vai de -2147483648 até 2147483647. Caso sejam só positivos, é de 0 até 429.496.295. |
+| BIGINT         | BIGINT[(M)] [UNSIGNED] [ZEROFILL]         | Número inteiro, com ou sem sinal negativo. Com sinal vai de -9.223.372.036.854.775.808 até 9.223.372.036.854.775.807. Sem sinal vai de 0 até 18.446.744.073.709.551.615. |
+| FLOAT          | FLOAT[(M [ , D])] [UNSIGNED] [ZEROFILL]   | Número pequeno em vírgula flutuante de precisão simples. Os valores válidos vão desde -3.402823466E+38 até -1.175494351E-38,0 até desde 175494351E-38 até 3.402823466E+38. |
+| DOUBLE         | DOUBLE[(M[ , D])] [UNSIGNED] [ZEROFILL]   | Número em vírgula flutuante de dupla precisão. Os valores permitidos vão desde -1.7976931348623157E+308 até -2.2250738585072014E-308, 0 e desde 2.2250738585072014E-308 até 1.7976931348623157E+308 |
+| DECIMAL        | DECIMAL[(M[ , D])] [UNSIGNED] [ZEROFILL]  | Número em vírgula flutuante desempacotado. O número armazena-se como uma cadeia. |
 
 ### Tipo temporal
 
-| Tipo             | Tamanho | Formato               | Usar                                                       |
-| :--------------- | :------ | :-------------------- | :--------------------------------------------------------- |
-| DATE             | 3 byte  | YYYY-MM-DD            | Valores de data                                            |
-| TIME [(fsp)]     | 3 byte  | HH: MM: SS            | Valor de tempo ou a duração                                |
-| YEAR [(4)]       | 1 byte  | YYYY                  | Valor do ano                                               |
-| DATETIME[(fsp)]  | 8 byte  | YYYY-MM-DD HH: MM: SS | Combinação de valores de data e hora                       |
-| TIMESTAMP[(fsp)] | 4 byte  | YYYYMMDD HHMMSS       | Misturando valor de data e hora, um carimbo de data / hora |
+| Tipo             | Formato             | Definição                                                    |
+| :--------------- | :------------------ | :----------------------------------------------------------- |
+| DATE             | AAAA-MM-DD          | Armazena uma data com valor entre ‘1000-01-01’ e ‘9999-12-31’ |
+| TIME [(fsp)]     | HH:MM:SS            | Armazena uma hora. A margem de horas vai desde -838 horas, 59 minutos e 59 segundos. |
+| YEAR [(4)]       | YYYY                | Armazena um ano. A margem de valores permitidos vai desde o ano 1901 ao ano 2155. |
+| DATETIME[(fsp)]  | AAAA-MM-DD HH:MM:SS | Armazena a data e hora combinadas. Suporta valores entre ‘1000-01-01 00:00:00’ e ‘9999-12-31 23:59:59’ |
+| TIMESTAMP[(fsp)] | aaaammddhhmmss      | Combinação de data e hora. A margem vai desde o 1 de Janeiro de 1970 ao ano 2037. O formato de armazenamento depende do tamanho do campo. |
 
 ### Tipo texto
 
-| Tipo       | Forma alternativa                                            | Tamanho            | Usar                                                 |
-| :--------- | ------------------------------------------------------------ | :----------------- | :--------------------------------------------------- |
-| CHAR       | [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-255 bytes        | String de comprimento fixo                           |
-| VARCHAR    | [NATIONAL] VARCHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-65535 bytes      | Strings de comprimento variável                      |
-| TINYBLOB   |                                                              | 0-255 bytes        | Não mais do que 255 caracteres em string binária     |
-| TINYTEXT   |                                                              | 0-255 bytes        | Strings de texto curtas                              |
-| BLOB [(M)] |                                                              | 0-65535 bytes      | Dados de texto longo em formato binário              |
-| TEXT       | TEXT [(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | 0-65535 bytes      | Dados de texto longo                                 |
-| MEDIUMBLOB |                                                              | 0-16777215 bytes   | Forma binária de dados de texto de comprimento médio |
-| MEDIUMTEXT |                                                              | 0-16777215 bytes   | Dados de texto de comprimento médio                  |
-| LONGBLOB   |                                                              | 0-4294967295 bytes | Longos dados de texto em formato binário             |
-| LONGTEXT   |                                                              | 0-4294967295 bytes | Longos dados de texto                                |
+| Tipo       | Forma alternativa                                            | Definição                                                    |
+| :--------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
+| CHAR       | [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | Armazena uma string de tamanho fixo. A cadeia poderá conter de 0 até 255 caracteres. |
+| VARCHAR    | [NATIONAL] VARCHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | Armazena uma string de tamanho variável. Vai de 0 a 255 caracteres. |
+| TINYBLOB   |                                                              | String de tamanho binário fixo de 0 a 255 caracteres.        |
+| TINYTEXT   |                                                              | String de tamanho fixo de 0 a 255 caracteres.                |
+| BLOB [(M)] |                                                              | Um texto com um máximo de 65.535 caracteres em formato binário. |
+| TEXT       | TEXT [(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | Um texto com um máximo de 65.535 caracteres.                 |
+| MEDIUMBLOB |                                                              | Um texto com um máximo de 16.777.215 caracteres em forma binária. |
+| MEDIUMTEXT |                                                              | Um texto com um máximo de 16.777.215 caracteres.             |
+| LONGBLOB   |                                                              | Um texto com um máximo de caracteres 4.294.967.295. em formato binário |
+| LONGTEXT   |                                                              | Um texto com um máximo de caracteres 4.294.967.295.          |
 
 ### Tipo ENUM
 
@@ -231,6 +231,7 @@ Nesses exemplos, configuramos o conjunto de caracteres UTF8 que possui símbolos
 - [MySQL — Tipos de dados: Introdução e dados numéricos (1 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-introdu%C3%A7%C3%A3o-e-dados-num%C3%A9ricos-1-de-3-a6e48fb5e1d3)
 - [MySQL — Tipos de dados: data/hora (2 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-data-hora-2-de-3-c147a8d90f93)
 - [MySQL — Tipos de dados: strings (3 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-strings-3-de-3-13cba7dccf2f)
+- [[Tipos de dados no MySQL](https://www.diegomacedo.com.br/tipos-de-dados-no-mysql/)](https://www.diegomacedo.com.br/tipos-de-dados-no-mysql/#:~:text=TinyInt%20%E2%80%93%20Caso%20haja%20valor%20negativo,vai%20de%20%2D2147483648%20at%C3%A9%202147483647.)
 - [Restrição MySQL NOT NULL](https://www.mysqltutorial.org/mysql-not-null-constraint/#:~:text=The%20NOT%20NULL%20constraint%20is,a%20column%20are%20not%20NULL%20.&text=A%20column%20may%20contain%20only,MySQL%20will%20issue%20an%20error.)
 
 ###### Principais links:
