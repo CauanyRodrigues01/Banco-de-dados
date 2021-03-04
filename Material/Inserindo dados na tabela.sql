@@ -18,3 +18,5 @@ INSERT INTO pessoas VALUES
 (DEFAULT, 'Claudiana', '1999-06-29', 'F', '70', '1.77', DEFAULT),
 (DEFAULT, 'Josefino', '2957-06-29', 'M', '75', '1.56', 'Estados Unidos'),
 (DEFAULT, 'Marcelo', '2987-06-29', 'M', '80', '1.88', 'Russia');
+
+DESC pessoas;
