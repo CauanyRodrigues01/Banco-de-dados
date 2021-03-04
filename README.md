@@ -77,8 +77,8 @@ Deve-se criar um atributo id com `NOT NULL` para que ele seja único e com `AUTO
 
 ```mysql
 CREATE TABLE nomeTabela (
-	id INT NOT NULL AUTO_INCREMENT,
-	nome VARCHAR(30) NOT NULL,
+    id INT NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(30) NOT NULL,
     PRIMARY KEY (id)
 );
 ```
