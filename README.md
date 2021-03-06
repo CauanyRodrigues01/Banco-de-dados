@@ -51,7 +51,7 @@
 
 - ##### INSERT INTO
 
-  Serve para inserir dados em uma tabela já existente. Os valores devem estar entre aspas e precisam estar na mesma ordem que o nome das colunas.
+  Serve para inserir dados em uma tabela já existente. Os valores devem estar entre aspas simples e precisam estar na mesma ordem que o nome das colunas.
 
   ```mysql
   INSERT INTO nomeTabela ('coluna1', 'coluna2'...) VALUES ('valor1', 'valor2'...);
@@ -122,17 +122,17 @@ UNSIGNED não aceita dados negativos.
 
 ### Tipo de valores numéricos
 
-| Tipos          | Forma alternativa                         | Definição                                                    |
-| :------------- | ----------------------------------------- | :----------------------------------------------------------- |
-| BIT            | BIT(M)                                    | Número inteiro que pode ser somente 0 (falso) ou 1 (verdadeiro). |
-| TINYINT        | TINYINT[(M)] [UNSIGNED] [ZEROFILL]        | Caso haja valor negativo, a margem de uso dele é de -128 até 127. Caso seja apenas positivo, vai de 0 a 255. |
-| SMALLINT       | SMALLINT[(M)] [UNSIGNED] [ZEROFILL]       | Número inteiro com ou sem sinal negativo. Caso haja sinal negativo, vai de -32768 até 32767. Sem sinal, vai de 0 até 65535. |
-| MEDIUMINT      | MEDIUMINT                                 | Número inteiro, com ou sem sinal negativo. Com sinal vai de -8.388.608 até 8.388.607. Sem sinal vai de 0 até 16777215. |
-| INT ou INTEGER | INT ou INTEGER[(M)] [UNSIGNED] [ZEROFILL] | Número inteiro, positivo ou negativo. Caso haja número negativo, sua margem vai de -2147483648 até 2147483647. Caso sejam só positivos, é de 0 até 429.496.295. |
-| BIGINT         | BIGINT[(M)] [UNSIGNED] [ZEROFILL]         | Número inteiro, com ou sem sinal negativo. Com sinal vai de -9.223.372.036.854.775.808 até 9.223.372.036.854.775.807. Sem sinal vai de 0 até 18.446.744.073.709.551.615. |
-| FLOAT          | FLOAT[(M [ , D])] [UNSIGNED] [ZEROFILL]   | Número pequeno em vírgula flutuante de precisão simples. Os valores válidos vão desde -3.402823466E+38 até -1.175494351E-38,0 até desde 175494351E-38 até 3.402823466E+38. |
-| DOUBLE         | DOUBLE[(M[ , D])] [UNSIGNED] [ZEROFILL]   | Número em vírgula flutuante de dupla precisão. Os valores permitidos vão desde -1.7976931348623157E+308 até -2.2250738585072014E-308, 0 e desde 2.2250738585072014E-308 até 1.7976931348623157E+308 |
-| DECIMAL        | DECIMAL[(M[ , D])] [UNSIGNED] [ZEROFILL]  | Número em vírgula flutuante desempacotado. O número armazena-se como uma cadeia. |
+| Tipos          | Forma alternativa                         | Definição                                                    | Valores possíveis                                            |
+| :------------- | ----------------------------------------- | :----------------------------------------------------------- | ------------------------------------------------------------ |
+| BIT            | BIT(M)                                    | Valores de bits                                              | 1 a 64                                                       |
+| TINYINT        | TINYINT[(M)] [UNSIGNED] [ZEROFILL]        | Número inteiro                                               | Com valor negativo: -128 até 127. Apenas valores positivos: 0 a 255 |
+| SMALLINT       | SMALLINT[(M)] [UNSIGNED] [ZEROFILL]       | Número inteiro                                               | Com valor negativo: -32768 até 32767. Apenas valores positivos: 0 até 65535 |
+| MEDIUMINT      | MEDIUMINT                                 | Número inteiro                                               | Com valor negativo: -8.388.608 até 8.388.607. Apenas valores positivos: 0 até 16777215 |
+| INT ou INTEGER | INT ou INTEGER[(M)] [UNSIGNED] [ZEROFILL] | Número inteiro                                               | Com valor negativo: -2147483648 até 2147483647. Apenas valores positivos: 0 até 429.496.295. |
+| BIGINT         | BIGINT[(M)] [UNSIGNED] [ZEROFILL]         | Número inteiro                                               | Com valor negativo: 9.223.372.036.854.775.808 até 9.223.372.036.854.775.807. Apenas valores positivos: 0 até 18.446.744.073.709.551.615. |
+| FLOAT          | FLOAT[(M [ , D])] [UNSIGNED] [ZEROFILL]   | Número de valor aproximado com vírgula flutuante de precisão simples | Baseado nas especificações do comando ou no Hardware e Sistema Operacional |
+| DOUBLE         | DOUBLE[(M[ , D])] [UNSIGNED] [ZEROFILL]   | Número de valor aproximado com vírgula flutuante de dupla precisão | Baseado nas especificações do comando ou no Hardware e Sistema Operacional |
+| DECIMAL        | DECIMAL[(M[ , D])] [UNSIGNED] [ZEROFILL]  | Número de valor exato em formato binário                     | Baseado nas especificações do comando ou no Hardware e Sistema Operacional |
 
 ### Tipo temporal
 
@@ -142,14 +142,14 @@ UNSIGNED não aceita dados negativos.
 | TIME [(fsp)]     | HH:MM:SS            | Armazena uma hora. A margem de horas vai desde -838 horas, 59 minutos e 59 segundos. |
 | YEAR [(4)]       | YYYY                | Armazena um ano. A margem de valores permitidos vai desde o ano 1901 ao ano 2155. |
 | DATETIME[(fsp)]  | AAAA-MM-DD HH:MM:SS | Armazena a data e hora combinadas. Suporta valores entre ‘1000-01-01 00:00:00’ e ‘9999-12-31 23:59:59’ |
-| TIMESTAMP[(fsp)] | aaaammddhhmmss      | Combinação de data e hora. A margem vai desde o 1 de Janeiro de 1970 ao ano 2037. O formato de armazenamento depende do tamanho do campo. |
+| TIMESTAMP[(fsp)] | AAAA-MM-DD HH:MM:SS | Combinação de data e hora. A margem vai desde o 1 de Janeiro de 1970 ao ano 2037. O formato de armazenamento depende do tamanho do campo. |
 
 ### Tipo texto
 
 | Tipo       | Forma alternativa                                            | Definição                                                    |
 | :--------- | ------------------------------------------------------------ | :----------------------------------------------------------- |
-| CHAR       | [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | Armazena uma string de tamanho fixo. A cadeia poderá conter de 0 até 255 caracteres. |
-| VARCHAR    | [NATIONAL] VARCHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | Armazena uma string de tamanho variável. Vai de 0 a 255 caracteres. |
+| CHAR       | [NATIONAL] CHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | String de tamanho fixo. Faixa de 0 até 255 caracteres.       |
+| VARCHAR    | [NATIONAL] VARCHAR[(M)] [CHARACTER SET charset_name] [COLLATE collation_name] | String de tamanho variável. Faixa de 0 a 65.535 caracteres.  |
 | TINYBLOB   |                                                              | String de tamanho binário fixo de 0 a 255 caracteres.        |
 | TINYTEXT   |                                                              | String de tamanho fixo de 0 a 255 caracteres.                |
 | BLOB [(M)] |                                                              | Um texto com um máximo de 65.535 caracteres em formato binário. |
