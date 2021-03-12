@@ -223,6 +223,103 @@ CREATE TABLE pessoas (
 
 Nesses exemplos, configuramos o conjunto de caracteres UTF8 que possui símbolos latinos.
 
+## Alterando dados da tabela
+
+A instrução `ALTER TABLE` é usada para adicionar, excluir ou modificar colunas em uma tabela existente, adicionar e eliminar várias restrições. Essa instrução possui as seguintes especificações opcionais:
+
+- FIRST
+
+  Serve para posicionar uma coluna **antes** de outra existente.
+
+- AFTER
+
+  Serve para posicionar uma coluna **depois** de outra existente.
+
+### Adicionar coluna
+
+```mysql
+ALTER TABLE nomeTabela
+ADD COLUMN nomeNovaColuna Tipo;
+```
+
+Nesse caso, a palavra `COLUMN` é opcional e pode ser omitida.
+
+Por padrão, essa instrução vai adicionar a coluna por último. 
+
+### Adicionar várias colunas
+
+```mysql
+ALTER TABLE nomeTabela
+ADD nomeNovaColuna Tipo,
+...
+ADD nomeNovaColuna Tipo;
+```
+
+### Modificar uma coluna
+
+```mysql
+ALTER TABLE nomeTabela
+MODIFY nomeColunaExistente NovasDefinições;
+```
+
+### Modificar várias colunas
+
+```mysql
+ALTER TABLE nomeTabela
+MODIFY nomeColunaExistente NovasDefinições,
+...
+MODIFY nomeColunaExistente NovasDefinições;
+```
+
+### Renomear coluna
+
+```mysql
+ALTER TABLE nomeTabela
+CHANGE COLUMN nomeColuna novoNome definições;
+```
+
+As definições declaradas nesse comando vão substituir as antigas. Se quiser mantê-las é preciso declará-las novamente.
+
+### Renomear tabela
+
+```mysql
+ALTER TABLE nomeTabela
+RENAME TO novoNome;
+```
+
+### Remover coluna
+
+```mysql
+ALTER TABLE nomeTabela
+DROP nomeColuna;
+```
+
+### Remover tabela
+
+```mysql
+DROP TABLE nomeTabela;
+```
+
+## Criando tabela com IF NOT EXISTS
+
+Essa instrução permite que o MySQL verifique se a tabela que está sendo criada já existe no banco de dados. Se for o caso, o MySQL irá ignorar a instrução inteira e não criará nenhuma nova tabela:
+
+```mysql
+CREATE TABLE IF NOT EXISTS nomeTabela (
+	nomeColuna,
+    ...
+    nomeColuna
+);
+```
+
+## Apagando tabela com IF EXISTS
+
+```mysql
+DROP TABLE IF EXISTS  nomeTabela;
+```
+
+A tabela só vai ser deletada se ela existir.
+
 ###### Fonte:
 
 - [Documentação MySQL](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html)
@@ -235,7 +332,7 @@ Nesses exemplos, configuramos o conjunto de caracteres UTF8 que possui símbolos
 - [MySQL — Tipos de dados: Introdução e dados numéricos (1 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-introdu%C3%A7%C3%A3o-e-dados-num%C3%A9ricos-1-de-3-a6e48fb5e1d3)
 - [MySQL — Tipos de dados: data/hora (2 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-data-hora-2-de-3-c147a8d90f93)
 - [MySQL — Tipos de dados: strings (3 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-strings-3-de-3-13cba7dccf2f)
-- [[Tipos de dados no MySQL](https://www.diegomacedo.com.br/tipos-de-dados-no-mysql/)](https://www.diegomacedo.com.br/tipos-de-dados-no-mysql/#:~:text=TinyInt%20%E2%80%93%20Caso%20haja%20valor%20negativo,vai%20de%20%2D2147483648%20at%C3%A9%202147483647.)
+- [Tipos de dados no MySQL](https://www.diegomacedo.com.br/tipos-de-dados-no-mysql/#:~:text=TinyInt%20%E2%80%93%20Caso%20haja%20valor%20negativo,vai%20de%20%2D2147483648%20at%C3%A9%202147483647.)
 - [Restrição MySQL NOT NULL](https://www.mysqltutorial.org/mysql-not-null-constraint/#:~:text=The%20NOT%20NULL%20constraint%20is,a%20column%20are%20not%20NULL%20.&text=A%20column%20may%20contain%20only,MySQL%20will%20issue%20an%20error.)
 
 ###### Principais links:
