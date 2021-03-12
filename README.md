@@ -11,6 +11,25 @@
 5. [Tipos de dados](#Tipos-de-dados)
    1. [Tipo de valores numéricos](#Tipo-de-valores-numéricos)
    2. [Tipo temporal](#Tipo-temporal)
+   3. [Tipo texto](#Tipo-texto)
+   4. [Tipo ENUM](#Tipo-ENUM)
+   5. [Tipo NULL](#Tipo-NULL)
+   6. [Tipo Bool ou Boolean](#Tipo-Bool-ou-Boolean)
+6. [Atributos](#Atributos)
+7. [Configurando o conjunto de caracteres e agrupamento](#Configurando-o-conjunto-de-caracteres-e-agrupamento)
+8. [Alterando dados da tabela](#Alterando-dados-da-tabela)
+   1. [Adicionar coluna](#Adicionar-coluna)
+   2. [Adicionar várias colunas](#Adicionar-várias-colunas)
+   3. [Modificar uma coluna](#Modificar-uma-coluna)
+   4. [Modificar várias colunas](#Modificar-várias-colunas)
+   5. [Renomear coluna](#Renomear-coluna)
+   6. [Renomear tabela](#Renomear-tabela)
+   7. [Remover coluna](#Remover-coluna)
+   8. [Remover tabela](#Remover-tabela)
+9. [Criando tabela com IF NOT EXISTS](#Criando-tabela-com-IF-NOT-EXISTS)
+10. [Apagando tabela com IF EXISTS](#Apagando-tabela-com-IF-EXISTS)
+11. [Fontes](#Fontes)
+12. [Principais links](#Principais-links:)
 
 ## Principais comandos
 
@@ -86,7 +105,7 @@ A restrição `PRIMARY KEY` identifica a exclusividade de cada registro em uma t
 
 Uma tabela pode ter apenas uma chave primária; e na tabela, essa chave primária pode consistir em uma ou várias colunas (campos).
 
-#### Chave primária na criação de tabela
+### Chave primária na criação de tabela
 
 Deve-se criar um atributo id com `NOT NULL` para que ele seja único e com `AUTO_INCREMENT`, para que o MySQL crie o id automaticamente para cada instância. No final, `PRIMARY KEY`recebe o id criado anteriormente.
 
