@@ -1,5 +1,16 @@
 # Banco de dados com MySQL
- Material desenvolvido durante meus estudos de Bando de Dados
+ Material desenvolvido durante meus estudos de Bando de Dados.
+
+## Índice
+
+1. [Principais comandos](#Principais-comandos)
+2. [DML](#DML)
+3. [Chave primária](#Chave-primária)
+   1. [Chave primária na criação de tabela](#Chave-primária-na-criação-de-tabela)
+4. [NOT NULL em CREATE TABLE](#NOT-NULL-em-CREATE-TABLE)
+5. [Tipos de dados](#Tipos-de-dados)
+   1. [Tipo de valores numéricos](#Tipo-de-valores-numéricos)
+   2. [Tipo temporal](#Tipo-temporal)
 
 ## Principais comandos
 
