@@ -350,6 +350,8 @@ DROP TABLE IF EXISTS  nomeTabela;
 
 A tabela só vai ser deletada se ela existir.
 
+##### [Voltar para o topo](#Banco-de-dados-com-MySQL)
+
 ###### Fonte:
 
 - [Documentação MySQL](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html)
