@@ -29,7 +29,7 @@
 9. [Criando tabela com IF NOT EXISTS](#Criando-tabela-com-IF-NOT-EXISTS)
 10. [Apagando tabela com IF EXISTS](#Apagando-tabela-com-IF-EXISTS)
 11. [Fontes](#Fontes)
-12. [Principais links](#Principais-links:)
+12. [Principais links](#Principais-links)
 
 ## Principais comandos
 
