@@ -350,6 +350,65 @@ DROP TABLE IF EXISTS  nomeTabela;
 
 A tabela só vai ser deletada se ela existir.
 
+## Manipulando linhas ou registros
+
+Usamos a instrução `UPDATE` para modificar as linhas de uma tabela. O comando `WHERE` serve para filtrar qual ou quais linhas serão modificadas. Caso esse comando não seja informado todos os dados da coluna serão alterados.
+
+```mysql
+UPDATE nomeTabela 
+SET campo = 'novoValorEntreAspas'  
+WHERE coluna = 'valorParaFiltro';
+```
+
+### Alterando mais de um campo
+
+```mysql
+UPDATE nomeTabela 
+SET campo1 = 'novoValor', campo2 = 'novoValor' ...
+WHERE coluna = 'valorParaFiltro';
+```
+
+### Usando o LIMIT
+
+Podemos limitar o número de linhas que podem ser atualizadas. O intuito de us-á-lo é de ter mais segurança, pois quando os dados são alterados não tem como voltar dando `Ctrl Z`.
+
+```mysql
+UPDATE nomeTabela 
+SET campo = 'novoValorEntreAspas'  
+WHERE coluna = 'valorParaFiltro'
+LIMIT 2;
+```
+
+Nesse caso, apenas 2 linhas podem ser afetadas.
+
+### Removendo linhas
+
+```mysql
+DELETE FROM nomeTabela
+WHERE coluna = 'valorParaFiltro';
+```
+
+### Operadores lógicos no WHERE
+
+Podemos adicionar ou deletar usando mais de um filtro no comando `where` e para isso usamos os operadores lógicos:
+
+```mysql
+DELETE FROM nomeTabela
+WHERE coluna1 = 'valorParaFiltro1' = '9' OR coluna2 = 'valorParaFiltro1';
+```
+
+No caso, a linha será removida caso corresponda ao filtro 1 OU ao filtro 2.
+
+Para saber mais sobre os operadores lógicos no MySQL consulte a documentação [clicando aqui](https://dev.mysql.com/doc/refman/8.0/en/logical-operators.html).
+
+### Deletando todas as linhas da tabela
+
+```mysql
+TRUNCATE cursos;
+```
+
+Diferente do comando `DROP`, o `TRUNCATE` não apaga a estrutura da tabela, apenas as linhas. Em outras palavras, limpa a tabela.
+
 ##### [Voltar para o topo](#Banco-de-dados-com-MySQL)
 
 ###### Fonte:
