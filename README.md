@@ -16,6 +16,7 @@
 11. [Manipulando linhas ou registros](#Manipulando-linhas-ou-registros)
 12. [Selecionando dados no banco](#Selecionando-dados-no-banco)
 13. [Principais links](#Principais-links)
+14. [Chave estrangeira](#Chave-estrangeira)
 
 ## Principais comandos
 
@@ -399,13 +400,46 @@ Diferente do comando `DROP`, o `TRUNCATE` não apaga a estrutura da tabela, apen
 
 O comando `SELECT` é usado para recuperar linhas selecionadas de uma ou mais tabelas e pode incluir instruções e subconsultas.
 
-### SELECT básico
+### SELECT simples
 
 ```mysql
-SELECT * FROM nome_tabela
+SELECT * FROM nome_tabela;
 ```
 
 Esse comando seleciona todas as linhas e colunas da tabela
+
+### SELECT e WHERE
+
+O comado `WHERE` permite passar condições de filtragem.
+
+```mysql
+SELECT * FROM nome_tabela
+WHERE nome_coluna = 'valor';
+```
+
+Esse comando seleciona todas as colunas da tabela, mas apenas as linhas que tem a coluna indicada no comado igual ao valor indicado.
+
+#### Usando operadores na filtragem
+
+```mysql
+SELECT nome_coluna1, nome_coluna2 carga FROM nome_tabela
+WHERE nome_coluna <= 'valor';
+```
+
+```mysql
+SELECT * FROM nome_tabela
+WHERE nome_coluna > valor AND totaulas < valor;
+```
+
+```mysql
+SELECT nome_coluna1, nome_coluna2 FROM nome_tabela
+WHERE nome_coluna BETWEEN valor AND valor;
+```
+
+```mysql
+SELECT nome_coluna1, nome_coluna2 FROM nome_tabela
+WHERE nome_coluna IN ('valor1', 'valor2', 'valor3');
+```
 
 ### SELECT e ordenação
 
@@ -431,36 +465,16 @@ SELECT nome_coluna1, nome_coluna2, nome_coluna3 FROM nome_tabela;
 
 Esse comando seleciona todas as linhas apenas das colunas indicadas no comando.
 
-### SELECT  e WHERE
+### Filtro de texto
 
-```mysql
-SELECT * FROM nome_tabela
-WHERE nome_coluna = 'valor';
-```
-
-Esse comando seleciona todas as colunas da tabela, mas apenas as linhas que tem a coluna indicada no comado igual ao valor indicado.
-
-#### Usando operadores na busca
-
-```mysql
-SELECT nome_coluna1, nome_coluna2 carga FROM nome_tabela
-WHERE nome_coluna <= 'valor';
-```
-
-```mysql
-SELECT * FROM nome_tabela
-WHERE nome_coluna > valor AND totaulas < valor;
-```
+O SELECT fornece o operador LIKE para busca parcial de string.
 
 ```mysql
 SELECT nome_coluna1, nome_coluna2 FROM nome_tabela
-WHERE nome_coluna BETWEEN valor AND valor;
+WHERE nome_coluna LIKE ‘string%’
 ```
 
-```mysql
-SELECT nome_coluna1, nome_coluna2 FROM nome_tabela
-WHERE nome_coluna IN ('valor1', 'valor2', 'valor3');
-```
+O % quer dizer que pode existir mais strings ou nada no lugar em que ele está.
 
 ### SELECT e DISTINCT 
 
@@ -477,6 +491,38 @@ SELECT count(*) FROM nome_tabela;
 ```
 
 Esse comando informa quantas linhas tem a tabela, por que o `*` está dentro dos parênteses.
+
+### Junção de tabelas com JOIN
+
+O SELECT permite juntar duas ou mais tabelas no mesmo resultado. É útil para verificar as chaves estrangeiras.
+
+```mysql
+SELECT A.CODIGO, A.DESCRICAO, B.DESCRICAO, B.QTD
+FROM PRODUTOS A
+INNER JOIN COMPONENTES B
+ON (A.CODIGO = B.CODPRODUTO)
+```
+
+Versão resumida:
+
+```mysql
+SELECT A.CODIGO, A.NOME, B.DATA, B.VALOR
+FROM CLIENTES A, PEDIDOS B
+WHERE A.CODIGO = B.CODCLIENTE
+```
+
+# Chave estrangeira
+
+### Criando tabelas
+
+```mysql
+CREATE TABLE nome_tabela (
+    id AUTO_INCREMENT PRIMARY KEY,
+    chaveEstrangeira INT NOT NULL,
+    CONSTRAINT tabelaDaChave_chave_fk
+    FOREIGN KEY (chaveEstrangeira)REFERENCES nome_tabela_da_chave (nome_chave_na_origem)
+);
+```
 
 ##### [Voltar para o topo](#Banco-de-dados-com-MySQL)
 
