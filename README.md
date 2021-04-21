@@ -14,7 +14,7 @@
 9. [Criando tabela com IF NOT EXISTS](#Criando-tabela-com-IF-NOT-EXISTS)
 10. [Apagando tabela com IF EXISTS](#Apagando-tabela-com-IF-EXISTS)
 11. [Manipulando linhas ou registros](#Manipulando-linhas-ou-registros)
-12. [Fontes](#Fontes)
+12. [Selecionando dados no banco](#Selecionando-dados-no-banco)
 13. [Principais links](#Principais-links)
 
 ## Principais comandos
@@ -479,21 +479,6 @@ SELECT count(*) FROM nome_tabela;
 Esse comando informa quantas linhas tem a tabela, por que o `*` está dentro dos parênteses.
 
 ##### [Voltar para o topo](#Banco-de-dados-com-MySQL)
-
-###### Fonte:
-
-- [Documentação MySQL](https://dev.mysql.com/doc/refman/5.7/en/charset-applications.html)
-- [Os 10 comandos SQL que você não pode viver sem!](https://becode.com.br/comandos-sql-nao-pode-viver-sem/)
-- [Restrição SQL PRIMARY KEY](https://www.w3schools.com/sql/sql_primarykey.asp)
-- [Restrição SQL NOT NULL](https://www.w3schools.com/sql/sql_notnull.asp)
-- [Instrução SQL DROP DATABASE](https://www.w3schools.com/sql/sql_drop_db.asp)
-- [Tipos de dados MySQL](http://www.w3big.com/mysql/mysql-data-types.html)
-- [Banco de Dados MySQL Tipos de Dados](https://devcontent.com.br/artigos/banco-de-dados/mysql/tipos-de-dados)
-- [MySQL — Tipos de dados: Introdução e dados numéricos (1 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-introdu%C3%A7%C3%A3o-e-dados-num%C3%A9ricos-1-de-3-a6e48fb5e1d3)
-- [MySQL — Tipos de dados: data/hora (2 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-data-hora-2-de-3-c147a8d90f93)
-- [MySQL — Tipos de dados: strings (3 de 3)](https://medium.com/mandabugs/mysql-tipos-de-dados-strings-3-de-3-13cba7dccf2f)
-- [Tipos de dados no MySQL](https://www.diegomacedo.com.br/tipos-de-dados-no-mysql/#:~:text=TinyInt%20%E2%80%93%20Caso%20haja%20valor%20negativo,vai%20de%20%2D2147483648%20at%C3%A9%202147483647.)
-- [Restrição MySQL NOT NULL](https://www.mysqltutorial.org/mysql-not-null-constraint/#:~:text=The%20NOT%20NULL%20constraint%20is,a%20column%20are%20not%20NULL%20.&text=A%20column%20may%20contain%20only,MySQL%20will%20issue%20an%20error.)
 
 ###### Principais links:
 
