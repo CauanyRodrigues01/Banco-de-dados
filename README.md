@@ -395,6 +395,89 @@ TRUNCATE cursos;
 
 Diferente do comando `DROP`, o `TRUNCATE` não apaga a estrutura da tabela, apenas as linhas. Em outras palavras, limpa a tabela.
 
+## Selecionando dados no banco
+
+O comando `SELECT` é usado para recuperar linhas selecionadas de uma ou mais tabelas e pode incluir instruções e subconsultas.
+
+### SELECT básico
+
+```mysql
+SELECT * FROM nome_tabela
+```
+
+Esse comando seleciona todas as linhas e colunas da tabela
+
+### SELECT e ordenação
+
+```mysql
+SELECT * FROM nome_tabela ORDER BY nome_coluna;
+```
+
+Esse comando seleciona todas as linhas e colunas da tabela organizando as linhas na ordem da coluna indicada. Por exemplo, se ela for um nome, será ordenada alfabeticamente.
+
+### SELECT e ordenação inversa
+
+```mysql
+SELECT * FROM nome_tabela ORDER BY nome_coluna DESC;
+```
+
+Esse comando seleciona todas as linhas e colunas da tabela organizando as linhas na ordem inversa da coluna indicada.
+
+### SELECT com apenas algumas colunas
+
+```mysql
+SELECT nome_coluna1, nome_coluna2, nome_coluna3 FROM nome_tabela;
+```
+
+Esse comando seleciona todas as linhas apenas das colunas indicadas no comando.
+
+### SELECT  e WHERE
+
+```mysql
+SELECT * FROM nome_tabela
+WHERE nome_coluna = 'valor';
+```
+
+Esse comando seleciona todas as colunas da tabela, mas apenas as linhas que tem a coluna indicada no comado igual ao valor indicado.
+
+#### Usando operadores na busca
+
+```mysql
+SELECT nome_coluna1, nome_coluna2 carga FROM nome_tabela
+WHERE nome_coluna <= 'valor';
+```
+
+```mysql
+SELECT * FROM nome_tabela
+WHERE nome_coluna > valor AND totaulas < valor;
+```
+
+```mysql
+SELECT nome_coluna1, nome_coluna2 FROM nome_tabela
+WHERE nome_coluna BETWEEN valor AND valor;
+```
+
+```mysql
+SELECT nome_coluna1, nome_coluna2 FROM nome_tabela
+WHERE nome_coluna IN ('valor1', 'valor2', 'valor3');
+```
+
+### SELECT e DISTINCT 
+
+```mysql
+SELECT DISTINCT nome_coluna FROM nome_tabela;
+```
+
+Esse comando seleciona as primeiras ocorrências de valores repetidos ou não na tabela.
+
+### SELECT e  count()
+
+```mysql
+SELECT count(*) FROM nome_tabela;
+```
+
+Esse comando informa quantas linhas tem a tabela, por que o `*` está dentro dos parênteses.
+
 ##### [Voltar para o topo](#Banco-de-dados-com-MySQL)
 
 ###### Fonte:
